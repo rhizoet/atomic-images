@@ -13,7 +13,7 @@ Custom Fedora Atomic images built with [BlueBuild](https://blue-build.org).
 (DMS). Login via greetd + `dms-greeter`. No Waybar, Mako, Fuzzel or Swaylock: DMS provides bar, launcher,
 notifications and lock screen. User configuration lives in `$HOME`, not in the image.
 
-- RPM: niri, xwayland-satellite, dms, dms-greeter, dgop, matugen, cliphist, greetd, kitty, nautilus, gnome-keyring,
+- RPM: niri, xwayland-satellite, dms, dms-greeter, dgop, matugen, cliphist, greetd, ghostty, nautilus, gnome-keyring,
   xdg-desktop-portal-gnome, micro, zsh, git, gcc, make, podman-docker
 - Flatpak (Flathub, installed on first boot): Firefox, Celluloid (mpv + yt-dlp: video, audio, YouTube/livestream URLs),
   Loupe, Papers, File Roller, Text Editor, Calculator, Flatseal
@@ -37,7 +37,10 @@ rpm-ostree rebase ostree-image-signed:docker://ghcr.io/rhizoet/niri:latest
 systemctl reboot
 ```
 
-After the first boot, `sysusers` has created the `greeter` user; log in and run `dms setup`.
+After the first boot, `sysusers` has created the `greeter` user. Log in; Niri starts with the DMS default config from
+`/etc/niri/` (a snapshot of what `dms setup` deploys, with Ghostty as terminal). It only applies while
+`~/.config/niri/config.kdl` does not exist. Run `dms setup` (or apply your dotfiles) for a personal config, which also
+enables DMS's dynamic theming of Niri.
 
 ## Maintainer
 

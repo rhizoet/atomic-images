@@ -29,7 +29,7 @@ modules:
         - cliphist
         - material-symbols-fonts
         - greetd
-        - kitty
+        - ghostty
         - xdg-desktop-portal-gnome
         - gnome-keyring
         - xdg-user-dirs
@@ -59,6 +59,9 @@ modules:
       enabled:
         - greetd.service
         - rpm-ostreed-automatic.timer
+    user:
+      enabled:
+        - dms.service
 
   - type: brew
 
@@ -75,5 +78,9 @@ modules:
           - org.gnome.TextEditor
           - org.gnome.Calculator
           - com.github.tchx84.Flatseal
+
+  - type: os-release
+    properties:
+      PRETTY_NAME: Atomic Niri
 
   - type: signing

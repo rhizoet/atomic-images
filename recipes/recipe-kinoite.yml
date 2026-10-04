@@ -39,4 +39,8 @@ modules:
         install:
           - org.mozilla.firefox
 
+  - type: os-release
+    properties:
+      PRETTY_NAME: Atomic Kinoite
+
   - type: signing
