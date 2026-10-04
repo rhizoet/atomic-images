@@ -1,0 +1,4 @@
+cosign.key
+output/
+/.bluebuild-scripts_*
+iso.log

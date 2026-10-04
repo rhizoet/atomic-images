@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: niri
+description: Fedora Atomic with Niri, DankMaterialShell and greetd
+base-image: quay.io/fedora-ostree-desktops/base-atomic
+image-version: 44
+
+modules:
+  - type: files
+    files:
+      - source: common
+        destination: /
+      - source: niri
+        destination: /
+
+  - type: dnf
+    repos:
+      copr:
+        - avengemedia/dms
+        - avengemedia/danklinux
+    install:
+      install-weak-deps: false
+      packages:
+        - niri
+        - xwayland-satellite
+        - dms
+        - dms-greeter
+        - dgop
+        - matugen
+        - cliphist
+        - material-symbols-fonts
+        - greetd
+        - kitty
+        - xdg-desktop-portal-gnome
+        - gnome-keyring
+        - xdg-user-dirs
+        - nautilus
+        - gvfs
+        - gvfs-smb
+        - brightnessctl
+        - wl-clipboard
+        - tuned-ppd
+        - zsh
+        - git
+        - unzip
+        - gcc
+        - gcc-c++
+        - make
+        - micro
+        - podman-docker
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
+        - nano
+        - nano-default-editor
+
+  - type: systemd
+    system:
+      enabled:
+        - greetd.service
+        - rpm-ostreed-automatic.timer
+
+  - type: brew
+
+  - type: default-flatpaks
+    configurations:
+      - notify: true
+        scope: system
+        install:
+          - org.mozilla.firefox
+          - io.github.celluloid_player.Celluloid
+          - org.gnome.Loupe
+          - org.gnome.Papers
+          - org.gnome.FileRoller
+          - org.gnome.TextEditor
+          - org.gnome.Calculator
+          - com.github.tchx84.Flatseal
+
+  - type: signing
