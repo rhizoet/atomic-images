@@ -36,9 +36,22 @@ modules:
         - nautilus
         - gvfs
         - gvfs-smb
+        - gvfs-mtp
+        - gvfs-fuse
+        - glycin-thumbnailer
+        - gst-thumbnailers
+        - gnome-disk-utility
+        - xdg-terminal-exec
+        - nm-connection-editor
+        - NetworkManager-openvpn
         - brightnessctl
+        - lm_sensors
+        - iio-sensor-proxy
         - wl-clipboard
         - tuned-ppd
+        - chezmoi
+        - btop
+        - fastfetch
         - zsh
         - git
         - unzip
